@@ -27,6 +27,16 @@ def preprocess_text(text):
     tokens = nltk.word_tokenize(text)
     # Remove stopwords
     stop_words = set(stopwords.words('english'))
+    custom_stopwords = set([
+        "E:\\Downloads\\StopWords-20230624T054051Z-001\\StopWords\\StopWords_Auditor.txt",
+        "E:\\Downloads\\StopWords-20230624T054051Z-001\\StopWords\\StopWords_Currencies.txt",
+        "E:\\Downloads\\StopWords-20230624T054051Z-001\\StopWords\\StopWords_DatesandNumbers.txt",
+        "E:\\Downloads\\StopWords-20230624T054051Z-001\\StopWords\\StopWords_Generic.txt",
+        "E:\\Downloads\\StopWords-20230624T054051Z-001\\StopWords\\StopWords_GenericLong.txt",
+        "E:\\Downloads\\StopWords-20230624T054051Z-001\\StopWords\\StopWords_Geographic.txt",
+        "E:\\Downloads\\StopWords-20230624T054051Z-001\\StopWords\\StopWords_Names.txt"
+    ])
+    stop_words.update(custom_stopwords)
     tokens = [token for token in tokens if token not in stop_words]
     # Perform stemming
     stemmer = PorterStemmer()
